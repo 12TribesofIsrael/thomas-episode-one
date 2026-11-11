@@ -160,7 +160,11 @@ header, .signup, .verse {
   .clips-grid {
     display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;
   }
-  .clips-grid blockquote.tiktok-embed { margin: 0 !important; }
+  /* TikTok Embed Player (developers.tiktok.com/doc/embed-player). The old blockquote + embed.js
+     method is deprecated and its library 404s on TikTok's CDN (found 2026-11-11). */
+  .clips-grid .clip { margin: 0; width: 325px; max-width: 100%; display: flex; flex-direction: column; gap: 8px; }
+  .clips-grid .clip iframe { width: 100%; aspect-ratio: 9 / 16; border: 0; border-radius: 8px; background: #000; }
+  .clips-grid .clip-link { font-size: 13px; color: var(--ink-soft); text-align: center; }
 
   .episode {
     margin: 56px 0 0; padding-top: 28px; border-top: 1px solid var(--rule);
@@ -213,28 +217,27 @@ header, .signup, .verse {
     <p class="signup-label">Work in progress</p>
     <p class="clips-intro">Daily reps, posted as they're made — this is the series being built in public.</p>
     <div class="clips-grid">
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7688886351831305485" data-video-id="7688886351831305485" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7689275240261668110" data-video-id="7689275240261668110" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7689500991565171981" data-video-id="7689500991565171981" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7690580137850440973" data-video-id="7690580137850440973" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7694467984089173262" data-video-id="7694467984089173262" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7694778160352644365" data-video-id="7694778160352644365" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7695927010035617038" data-video-id="7695927010035617038" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7696295852930796813" data-video-id="7696295852930796813" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7696661505802112269" data-video-id="7696661505802112269" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7697361200677391629" data-video-id="7697361200677391629" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7698843375847427342" data-video-id="7698843375847427342" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7699237469182610702" data-video-id="7699237469182610702" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7699585756137884942" data-video-id="7699585756137884942" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7699868758789065998" data-video-id="7699868758789065998" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7701063563170958605" data-video-id="7701063563170958605" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7701485979021888781" data-video-id="7701485979021888781" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7702167924668157198" data-video-id="7702167924668157198" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7706181708621548813" data-video-id="7706181708621548813" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7706220311519268110" data-video-id="7706220311519268110" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7688886351831305485?description=1" title="Clip 1" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7688886351831305485" target="_blank" rel="noopener">Watch on TikTok</a></figure>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7689275240261668110?description=1" title="Clip 2" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7689275240261668110" target="_blank" rel="noopener">Watch on TikTok</a></figure>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7689500991565171981?description=1" title="Clip 3" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7689500991565171981" target="_blank" rel="noopener">Watch on TikTok</a></figure>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7690580137850440973?description=1" title="Clip 4" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7690580137850440973" target="_blank" rel="noopener">Watch on TikTok</a></figure>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7694467984089173262?description=1" title="Clip 5" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7694467984089173262" target="_blank" rel="noopener">Watch on TikTok</a></figure>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7694778160352644365?description=1" title="Clip 6" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7694778160352644365" target="_blank" rel="noopener">Watch on TikTok</a></figure>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7695927010035617038?description=1" title="Clip 7" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7695927010035617038" target="_blank" rel="noopener">Watch on TikTok</a></figure>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7696295852930796813?description=1" title="Clip 8" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7696295852930796813" target="_blank" rel="noopener">Watch on TikTok</a></figure>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7696661505802112269?description=1" title="Clip 9" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7696661505802112269" target="_blank" rel="noopener">Watch on TikTok</a></figure>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7697361200677391629?description=1" title="Clip 10" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7697361200677391629" target="_blank" rel="noopener">Watch on TikTok</a></figure>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7698843375847427342?description=1" title="Clip 11" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7698843375847427342" target="_blank" rel="noopener">Watch on TikTok</a></figure>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7699237469182610702?description=1" title="Clip 12" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7699237469182610702" target="_blank" rel="noopener">Watch on TikTok</a></figure>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7699585756137884942?description=1" title="Clip 13" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7699585756137884942" target="_blank" rel="noopener">Watch on TikTok</a></figure>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7699868758789065998?description=1" title="Clip 14" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7699868758789065998" target="_blank" rel="noopener">Watch on TikTok</a></figure>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7701063563170958605?description=1" title="Clip 15" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7701063563170958605" target="_blank" rel="noopener">Watch on TikTok</a></figure>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7701485979021888781?description=1" title="Clip 16" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7701485979021888781" target="_blank" rel="noopener">Watch on TikTok</a></figure>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7702167924668157198?description=1" title="Clip 17" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7702167924668157198" target="_blank" rel="noopener">Watch on TikTok</a></figure>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7706181708621548813?description=1" title="Clip 18" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7706181708621548813" target="_blank" rel="noopener">Watch on TikTok</a></figure>
+      <figure class="clip"><iframe src="https://www.tiktok.com/player/v1/7706220311519268110?description=1" title="Clip 19" allow="fullscreen" loading="lazy"></iframe><a class="clip-link" href="https://www.tiktok.com/@innateabilitiesai/video/7706220311519268110" target="_blank" rel="noopener">Watch on TikTok</a></figure>
     </div>
   </section>
-  <script async src="https://www.tiktok.com/embed.js"></script>
 
   <blockquote class="verse">
     <span id="verseText"></span>
