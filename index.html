@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Episode One Is Here</title>
+<meta name="description" content="A new animated series drawn from scripture — made by one artist. Episode One, Part 1 is live now.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;700&display=swap">
+<style>
+  /* One deliberate theme: the cel-ink look, explicit everywhere. */
+  :root {
+    --paper:   #131019;
+    --surface: #1C1826;
+    --ink:     #EFEDF4;
+    --ink-soft:#B3ACC4;
+    --ink-faint:#7E7691;
+    --rule:    #332C42;
+    --amber:   #E8B33C;
+    --indigo:  #8B7BFF;
+    --shadow:  #0C0A11;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 22px 90px; }
+
+  header { padding: 72px 0 0; }
+  .eyebrow {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--amber); margin: 0 0 22px;
+  }
+  h1 {
+    font-family: "Anton", "Arial Narrow", Impact, sans-serif;
+    font-weight: 400; text-transform: uppercase;
+    font-size: clamp(52px, 15vw, 104px);
+    line-height: 0.9; margin: 0 0 26px; text-wrap: balance;
+  }
+  h1 span { color: var(--amber); }
+  .lede {
+    font-size: clamp(18px, 4vw, 21px);
+    color: var(--ink-soft); max-width: 30em; margin: 0 0 40px;
+  }
+  .lede strong { color: var(--ink); font-weight: 500; }
+
+  /* signup */
+  .signup {
+    background: var(--surface);
+    border-left: 4px solid var(--indigo);
+    box-shadow: 6px 6px 0 var(--shadow);
+    padding: 26px 24px 24px;
+  }
+  .signup-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--indigo); margin: 0 0 12px;
+  }
+  .signup p { margin: 0 0 18px; font-size: 16px; color: var(--ink-soft); }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; }
+  input[type="email"] {
+    flex: 1 1 220px;
+    background: var(--paper);
+    border: 1.5px solid var(--rule);
+    color: var(--ink);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 15px;
+    padding: 13px 14px;
+    border-radius: 0;
+  }
+  input[type="email"]:focus { outline: 2px solid var(--indigo); outline-offset: 2px; border-color: var(--indigo); }
+  input[type="email"]::placeholder { color: var(--ink-faint); }
+  button {
+    flex: 0 0 auto;
+    font-family: "Anton", sans-serif;
+    font-size: 16px; letter-spacing: 0.05em; text-transform: uppercase;
+    background: var(--amber); color: #131019;
+    border: none; padding: 13px 26px; cursor: pointer;
+  }
+  button:hover { filter: brightness(1.08); }
+  button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .fine {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; color: var(--ink-faint); margin: 14px 0 0; letter-spacing: 0.03em;
+  }
+  .msg { margin: 14px 0 0; font-size: 15px; }
+  .msg.ok { color: #5FBF90; }
+  .msg.err { color: #E06B63; }
+
+  .verse {
+    margin: 56px 0 0; padding-top: 28px; border-top: 1px solid var(--rule);
+    font-style: italic; color: var(--ink-soft); font-size: 16px;
+  }
+  .verse cite {
+    display: block; margin-top: 8px; font-style: normal;
+    font-family: "JetBrains Mono", monospace; font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint);
+  }
+  footer {
+    margin-top: 56px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px; letter-spacing: 0.05em; color: var(--ink-faint);
+  }
+  @keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+header, .signup, .verse {
+  animation: fadeUp 0.8s ease-out;
+}
+  body { position: relative; overflow-x: hidden; }
+  body::before, body::after {
+    content: "";
+    position: fixed;
+    width: 480px; height: 480px;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+    opacity: 0.35;
+  }
+  body::before {
+    top: -120px; left: -100px;
+    background: var(--indigo);
+    animation: driftA 22s ease-in-out infinite;
+  }
+  body::after {
+    bottom: -140px; right: -120px;
+    background: var(--amber);
+    animation: driftB 26s ease-in-out infinite;
+  }
+  @keyframes driftA {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(60px, 40px); }
+  }
+  @keyframes driftB {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-50px, -30px); }
+  }
+  h1 span {
+    display: inline-block;
+    animation: floatText 4s ease-in-out infinite;
+  }
+  @keyframes floatText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .clips {
+    margin: 56px 0 0; padding-top: 28px; border-top: 1px solid var(--rule);
+  }
+  .clips-intro { font-size: 16px; color: var(--ink-soft); margin: 0 0 24px; }
+  .clips-grid {
+    display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;
+  }
+  .clips-grid blockquote.tiktok-embed { margin: 0 !important; }
+
+  .episode {
+    margin: 56px 0 0; padding-top: 28px; border-top: 1px solid var(--rule);
+  }
+  .episode-intro { font-size: 16px; color: var(--ink-soft); margin: 0 0 20px; }
+  .episode-frame {
+    position: relative; width: 100%; padding-bottom: 56.25%; height: 0;
+    overflow: hidden; background: var(--shadow);
+    border-left: 4px solid var(--amber); box-shadow: 6px 6px 0 var(--shadow);
+  }
+  .episode-frame iframe {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">A new animated series</p>
+    <h1>Episode<br>One is<br><span>here</span></h1>
+    <p class="lede">Part 1 is live now. Drawn from scripture. Built shot by shot by <strong>one artist learning in public</strong>. New characters, an end-times story, and more parts on the way.</p>
+  </header>
+
+  <section class="signup" aria-label="Get notified">
+    <p class="signup-label">First watch list</p>
+    <p>Leave your email and you'll see new parts before anyone else — plus the work-in-progress as it happens. No spam, ever. Just the show.</p>
+    <form id="signup">
+      <input type="hidden" name="access_key" value="95f711d6-d107-4026-a7a8-5a4b941f75e9">
+      <input type="hidden" name="subject" value="⚡ First-watch signup — Thomas's series site">
+      <input type="hidden" name="from_name" value="Episode One site">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="row">
+        <input type="email" name="email" required placeholder="your@email.com" aria-label="Email address">
+        <button type="submit">Count me in</button>
+      </div>
+      <p class="msg" id="msg" role="status"></p>
+    </form>
+    <p class="fine">One email when Episode One drops. A few as it gets close.</p>
+  </section>
+
+  <section class="episode" aria-label="Episode One, Part 1">
+    <p class="signup-label">Episode One &middot; Part 1</p>
+    <p class="episode-intro">The story so far — built shot by shot, published as it happens.</p>
+    <div class="episode-frame">
+      <iframe src="https://www.youtube.com/embed/i-ieLbFZ0Z4" title="Episode 1 (Pt. 1)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="clips" aria-label="Latest clips">
+    <p class="signup-label">Work in progress</p>
+    <p class="clips-intro">Daily reps, posted as they're made — this is the series being built in public.</p>
+    <div class="clips-grid">
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7688886351831305485" data-video-id="7688886351831305485" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7689275240261668110" data-video-id="7689275240261668110" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7689500991565171981" data-video-id="7689500991565171981" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7690580137850440973" data-video-id="7690580137850440973" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7694467984089173262" data-video-id="7694467984089173262" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7694778160352644365" data-video-id="7694778160352644365" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7695927010035617038" data-video-id="7695927010035617038" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7696295852930796813" data-video-id="7696295852930796813" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7696661505802112269" data-video-id="7696661505802112269" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7697361200677391629" data-video-id="7697361200677391629" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7698843375847427342" data-video-id="7698843375847427342" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7699237469182610702" data-video-id="7699237469182610702" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7699585756137884942" data-video-id="7699585756137884942" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7699868758789065998" data-video-id="7699868758789065998" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7701063563170958605" data-video-id="7701063563170958605" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7701485979021888781" data-video-id="7701485979021888781" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7702167924668157198" data-video-id="7702167924668157198" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7706181708621548813" data-video-id="7706181708621548813" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@innateabilitiesai/video/7706220311519268110" data-video-id="7706220311519268110" style="max-width: 605px;min-width: 325px;"><section></section></blockquote>
+    </div>
+  </section>
+  <script async src="https://www.tiktok.com/embed.js"></script>
+
+  <blockquote class="verse">
+    <span id="verseText"></span>
+    <cite id="verseCite"></cite>
+  </blockquote>
+
+  <footer>Made by Thomas · 2026</footer>
+</div>
+
+<script>
+  const verses = [
+    { text: "Write the vision, and make it plain upon tables, that he may run that readeth it.", cite: "Habakkuk 2:2 · KJV" },
+    { text: "He that dwelleth in the secret place of the most High shall abide under the shadow of the Almighty.", cite: "Psalm 91:1 · KJV" },
+    { text: "And God shall wipe away all tears from their eyes; and there shall be no more death, neither sorrow, nor crying, neither shall there be any more pain: for the former things are passed away.", cite: "Revelation 21:4 · KJV" },
+    { text: "But they that wait upon the LORD shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint.", cite: "Isaiah 40:31 · KJV" },
+    { text: "And they that be wise shall shine as the brightness of the firmament; and they that turn many to righteousness as the stars for ever and ever.", cite: "Daniel 12:3 · KJV" }
+  ];
+  const pick = verses[Math.floor(Math.random() * verses.length)];
+  document.getElementById('verseText').textContent = pick.text;
+  document.getElementById('verseCite').textContent = pick.cite;
+
+  const form = document.getElementById('signup');
+  const msg = document.getElementById('msg');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    msg.textContent = 'Sending…';
+    msg.className = 'msg';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(form)
+      });
+      const data = await res.json();
+      if (data.success) {
+        msg.textContent = "You're on the list. Episode One comes to you first.";
+        msg.className = 'msg ok';
+        form.querySelector('input[type="email"]').value = '';
+      } else {
+        throw new Error(data.message || 'failed');
+      }
+    } catch {
+      msg.textContent = "That didn't go through — try once more in a minute.";
+      msg.className = 'msg err';
+    }
+  });
+</script>
+</body>
+</html>
